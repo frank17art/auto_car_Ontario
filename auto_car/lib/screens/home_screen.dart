@@ -26,3 +26,12 @@ class _HomeScreenState extends State<HomeScreen> {
     _carsFuture = _carRepository.getAllCars();
     _searchController.addListener(_onSearchChanged);
   }
+    void _onSearchChanged() {
+    setState(() {
+      if (_searchController.text.isEmpty) {
+        _carsFuture = _getFilteredCars();
+      } else {
+        _carsFuture = _carRepository.searchCars(_searchController.text);
+      }
+    });
+  }
