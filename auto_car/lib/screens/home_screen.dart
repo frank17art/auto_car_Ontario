@@ -152,5 +152,72 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
+          // Grille des voitures
+          Expanded(
+            child: FutureBuilder<List<Car>>(
+              future: _carsFuture,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+
+                if (snapshot.hasError) {
+                  return Center(
+                    child: Text('Erreur: ${snapshot.error}'),
+                  );
+                }
+
+                final cars = snapshot.data ?? [];
+
+                if (cars.isEmpty) {
+                  return const Center(
+                    child: Text('Aucune voiture trouvée'),
+                  );
+                }
+
+                return GridView.builder(
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 16,
+                    crossAxisSpacing: 16,
+                    childAspectRatio: 0.75,
+                  ),
+                  itemCount: cars.length,
+                  itemBuilder: (context, index) {
+                    final car = cars[index];
+                    
+                    return CarCard(
+                      car: car,
+                      onTap: () {
+                        Navigator.of(context).pushNamed(
+                          '/car-detail',
+                          arguments: car.id,
+                        );
+                      },
+                      onFavoriteTap: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              '${car.brand} ${car.model} ajouté aux favoris',
+                            ),
+                            duration: const Duration(seconds: 2),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 
 
