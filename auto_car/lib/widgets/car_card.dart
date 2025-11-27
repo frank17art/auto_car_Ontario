@@ -52,4 +52,26 @@ class CarCard extends StatelessWidget {
                   ),
                 ),
 
-      
+                                // Badge de disponibilité
+                Positioned(
+                  top: 8,
+                  right: 8,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 6,
+                    ),
+                    decoration: BoxDecoration(
+                      color: car.isAvailable ? Colors.green : Colors.grey,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Text(
+                      car.isAvailable ? 'Disponible' : 'Indisponible',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
