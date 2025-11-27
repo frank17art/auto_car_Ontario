@@ -43,3 +43,15 @@ class _HomeScreenState extends State<HomeScreen> {
     } else {
       cars = await _carRepository.filterByCategory(_selectedCategory);
     }
+    // Appliquer le tri
+    switch (_sortBy) {
+      case 'Prix: bas→haut':
+        cars = await _carRepository.sortByPrice(cars, ascending: true);
+        break;
+      case 'Prix: haut→bas':
+        cars = await _carRepository.sortByPrice(cars, ascending: false);
+        break;
+      default:
+        cars = await _carRepository.sortByYear(cars, ascending: false);
+    }
+    
