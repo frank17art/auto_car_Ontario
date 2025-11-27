@@ -35,3 +35,11 @@ class _HomeScreenState extends State<HomeScreen> {
       }
     });
   }
+    Future<List<Car>> _getFilteredCars() async {
+    List<Car> cars;
+    
+    if (_selectedCategory == 'Tous') {
+      cars = await _carRepository.getAllCars();
+    } else {
+      cars = await _carRepository.filterByCategory(_selectedCategory);
+    }
