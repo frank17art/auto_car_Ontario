@@ -97,3 +97,157 @@ class _ContactFormState extends State<ContactForm> {
             ),
             const SizedBox(height: 24),
 
+            // Prénom
+            TextFormField(
+              controller: _firstNameController,
+              decoration: InputDecoration(
+                labelText: 'Prénom',
+                hintText: 'Entrez votre prénom',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                filled: true,
+                fillColor: Colors.grey[100],
+              ),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Le prénom est requis';
+                }
+                return null;
+              },
+            ),
+            const SizedBox(height: 16),
+
+            // Nom
+            TextFormField(
+              controller: _lastNameController,
+              decoration: InputDecoration(
+                labelText: 'Nom',
+                hintText: 'Entrez votre nom',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                filled: true,
+                fillColor: Colors.grey[100],
+              ),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Le nom est requis';
+                }
+                return null;
+              },
+            ),
+            const SizedBox(height: 16),
+
+            // Email
+            TextFormField(
+              controller: _emailController,
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecoration(
+                labelText: 'Email',
+                hintText: 'Entrez votre email',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                filled: true,
+                fillColor: Colors.grey[100],
+              ),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'L\'email est requis';
+                }
+                if (!value.contains('@')) {
+                  return 'Veuillez entrer un email valide';
+                }
+                return null;
+              },
+            ),
+            const SizedBox(height: 16),
+
+            // Téléphone
+            TextFormField(
+              controller: _phoneController,
+              keyboardType: TextInputType.phone,
+              decoration: InputDecoration(
+                labelText: 'Téléphone',
+                hintText: 'Entrez votre numéro de téléphone',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                filled: true,
+                fillColor: Colors.grey[100],
+              ),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Le téléphone est requis';
+                }
+                return null;
+              },
+            ),
+            const SizedBox(height: 16),
+
+            // Message
+            TextFormField(
+              controller: _messageController,
+              maxLines: 5,
+              decoration: InputDecoration(
+                labelText: 'Votre message',
+                hintText: 'Décrivez votre demande ou posez vos questions...',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                filled: true,
+                fillColor: Colors.grey[100],
+                alignLabelWithHint: true,
+              ),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Un message est requis';
+                }
+                if (value.length < 10) {
+                  return 'Le message doit contenir au moins 10 caractères';
+                }
+                return null;
+              },
+            ),
+            const SizedBox(height: 24),
+
+            // Bouton submit
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: _isLoading ? null : _submitForm,
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  backgroundColor: Colors.blue,
+                  disabledBackgroundColor: Colors.grey,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: _isLoading
+                    ? const SizedBox(
+                        height: 20,
+                        width: 20,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          valueColor:
+                              AlwaysStoppedAnimation<Color>(Colors.white),
+                        ),
+                      )
+                    : const Text(
+                        'Envoyer ma demande',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
