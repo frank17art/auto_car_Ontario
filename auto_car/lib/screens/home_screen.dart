@@ -54,4 +54,38 @@ class _HomeScreenState extends State<HomeScreen> {
       default:
         cars = await _carRepository.sortByYear(cars, ascending: false);
     }
-    
+    return cars;
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('AutoCar', style: TextStyle(fontWeight: FontWeight.bold)),
+        backgroundColor: Colors.blue,
+        elevation: 0,
+      ),
+      body: Column(
+        children: [
+          // Recherche
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: TextField(
+              controller: _searchController,
+              decoration: InputDecoration(
+                hintText: 'Rechercher une marque, modèle...',
+                prefixIcon: const Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                filled: true,
+                fillColor: Colors.grey[100],
+              ),
+            ),
+          ),
