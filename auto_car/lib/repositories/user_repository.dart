@@ -58,16 +58,12 @@ class UserRepository {
   }
 
   /// Connexion utilisateur
-  Future<User?> login({
-    required String email,
-    required String password,
-  }) async {
+  Future<User?> login({required String email, required String password}) async {
     await Future.delayed(const Duration(milliseconds: 600));
 
     try {
-      final user = _mockUsers.values
-          .firstWhere((user) => user.email == email);
-      
+      final user = _mockUsers.values.firstWhere((user) => user.email == email);
+
       // En production, vérifier le mot de passe de manière sécurisée
       if (password.isNotEmpty) {
         _currentUser = user;

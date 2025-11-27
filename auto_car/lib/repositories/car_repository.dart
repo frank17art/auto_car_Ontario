@@ -10,7 +10,8 @@ class CarRepository {
       year: 2023,
       price: 45000,
       category: 'Sedan',
-      imageUrl: 'https://images.unsplash.com/photo-1560958089-b8a63c89c4f0?w=500',
+      imageUrl:
+          'https://images.unsplash.com/photo-1560958089-b8a63c89c4f0?w=500',
       description: 'Voiture électrique performante avec autonomie de 500km',
       mileage: 5000,
       fuelType: 'Électrique',
@@ -24,7 +25,8 @@ class CarRepository {
       year: 2022,
       price: 65000,
       category: 'SUV',
-      imageUrl: 'https://images.unsplash.com/photo-1552820728-8ac41f1ce891?w=500',
+      imageUrl:
+          'https://images.unsplash.com/photo-1552820728-8ac41f1ce891?w=500',
       description: 'SUV de luxe spacieux avec intérieur premium',
       mileage: 15000,
       fuelType: 'Essence',
@@ -38,7 +40,8 @@ class CarRepository {
       year: 2021,
       price: 25000,
       category: 'Hatchback',
-      imageUrl: 'https://images.unsplash.com/photo-1589345619662-95a3c3b03e19?w=500',
+      imageUrl:
+          'https://images.unsplash.com/photo-1589345619662-95a3c3b03e19?w=500',
       description: 'Voiture compacte économe en carburant',
       mileage: 40000,
       fuelType: 'Essence',
@@ -52,7 +55,8 @@ class CarRepository {
       year: 2020,
       price: 35000,
       category: 'Sedan',
-      imageUrl: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=500',
+      imageUrl:
+          'https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=500',
       description: 'Berline sportive avec finition Audi',
       mileage: 60000,
       fuelType: 'Diesel',
@@ -66,7 +70,8 @@ class CarRepository {
       year: 2023,
       price: 38000,
       category: 'SUV',
-      imageUrl: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500',
+      imageUrl:
+          'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500',
       description: 'SUV fiable avec système hybride efficace',
       mileage: 8000,
       fuelType: 'Hybride',
@@ -123,9 +128,11 @@ class CarRepository {
     await Future.delayed(const Duration(milliseconds: 400));
     final lowerQuery = query.toLowerCase();
     return _mockCars
-        .where((car) =>
-            car.brand.toLowerCase().contains(lowerQuery) ||
-            car.model.toLowerCase().contains(lowerQuery))
+        .where(
+          (car) =>
+              car.brand.toLowerCase().contains(lowerQuery) ||
+              car.model.toLowerCase().contains(lowerQuery),
+        )
         .toList();
   }
 
@@ -139,9 +146,10 @@ class CarRepository {
   Future<List<Car>> sortByPrice(List<Car> cars, {bool ascending = true}) async {
     await Future.delayed(const Duration(milliseconds: 200));
     final sorted = List<Car>.from(cars);
-    sorted.sort((a, b) => ascending
-        ? a.price.compareTo(b.price)
-        : b.price.compareTo(a.price));
+    sorted.sort(
+      (a, b) =>
+          ascending ? a.price.compareTo(b.price) : b.price.compareTo(a.price),
+    );
     return sorted;
   }
 
@@ -149,8 +157,9 @@ class CarRepository {
   Future<List<Car>> sortByYear(List<Car> cars, {bool ascending = false}) async {
     await Future.delayed(const Duration(milliseconds: 200));
     final sorted = List<Car>.from(cars);
-    sorted.sort((a, b) =>
-        ascending ? a.year.compareTo(b.year) : b.year.compareTo(a.year));
+    sorted.sort(
+      (a, b) => ascending ? a.year.compareTo(b.year) : b.year.compareTo(a.year),
+    );
     return sorted;
   }
 }
