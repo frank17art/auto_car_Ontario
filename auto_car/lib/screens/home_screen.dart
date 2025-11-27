@@ -9,3 +9,20 @@ class HomeScreen extends StatefulWidget {
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
+class _HomeScreenState extends State<HomeScreen> {
+  final CarRepository _carRepository = CarRepository();
+  late Future<List<Car>> _carsFuture;
+  
+  String _selectedCategory = 'Tous';
+  String _sortBy = 'Récents';
+  final TextEditingController _searchController = TextEditingController();
+  
+  final List<String> categories = ['Tous', 'Sedan', 'SUV', 'Hatchback'];
+  final List<String> sortOptions = ['Récents', 'Prix: bas→haut', 'Prix: haut→bas'];
+
+  @override
+  void initState() {
+    super.initState();
+    _carsFuture = _carRepository.getAllCars();
+    _searchController.addListener(_onSearchChanged);
+  }
