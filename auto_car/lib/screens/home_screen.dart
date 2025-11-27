@@ -124,4 +124,33 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
+          // Tri
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Trier par:',
+                  style: TextStyle(fontWeight: FontWeight.w500),
+                ),
+                DropdownButton<String>(
+                  value: _sortBy,
+                  items: sortOptions.map((option) {
+                    return DropdownMenuItem(
+                      value: option,
+                      child: Text(option),
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      _sortBy = value!;
+                      _carsFuture = _getFilteredCars();
+                    });
+                  },
+                ),
+              ],
+            ),
+          ),
+
 
