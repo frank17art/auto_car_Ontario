@@ -16,9 +16,17 @@ class AutoCarApp extends StatelessWidget {
     return MaterialApp(
       title: 'AutoCar',
       theme: ThemeData(
+<<<<<<< HEAD
         primaryColor: const Color.fromARGB(255, 30, 143, 5),
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+=======
+        primaryColor: Colors.blue,
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.blue,
+        ),
+>>>>>>> 60ba5c58994fd6f6b825817beced898338b6c5f1
       ),
       home: const HomeScreen(),
       onGenerateRoute: _generateRoute,
@@ -35,6 +43,7 @@ class AutoCarApp extends StatelessWidget {
 
       case '/contact':
         final car = settings.arguments as Car;
+<<<<<<< HEAD
         return MaterialPageRoute(builder: (context) => ContactScreen(car: car));
 
       default:
@@ -42,3 +51,16 @@ class AutoCarApp extends StatelessWidget {
     }
   }
 }
+=======
+        return MaterialPageRoute(
+          builder: (context) => ContactScreen(car: car),
+        );
+
+      default:
+        return MaterialPageRoute(
+          builder: (context) => const HomeScreen(),
+        );
+    }
+  }
+}
+>>>>>>> 60ba5c58994fd6f6b825817beced898338b6c5f1

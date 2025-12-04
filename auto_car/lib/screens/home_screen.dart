@@ -37,8 +37,12 @@ class _HomeScreenState extends State<HomeScreen> {
       }
     });
   }
+<<<<<<< HEAD
 
   Future<List<Car>> _getFilteredCars() async {
+=======
+    Future<List<Car>> _getFilteredCars() async {
+>>>>>>> 60ba5c58994fd6f6b825817beced898338b6c5f1
     List<Car> cars;
     
     if (_selectedCategory == 'Tous') {
@@ -46,7 +50,10 @@ class _HomeScreenState extends State<HomeScreen> {
     } else {
       cars = await _carRepository.filterByCategory(_selectedCategory);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 60ba5c58994fd6f6b825817beced898338b6c5f1
     // Appliquer le tri
     switch (_sortBy) {
       case 'Prix: bas→haut':
@@ -58,7 +65,10 @@ class _HomeScreenState extends State<HomeScreen> {
       default:
         cars = await _carRepository.sortByYear(cars, ascending: false);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 60ba5c58994fd6f6b825817beced898338b6c5f1
     return cars;
   }
 
@@ -94,7 +104,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
+<<<<<<< HEAD
 
+=======
+>>>>>>> 60ba5c58994fd6f6b825817beced898338b6c5f1
           // Filtres (Catégories)
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -130,7 +143,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
+<<<<<<< HEAD
 
+=======
+>>>>>>> 60ba5c58994fd6f6b825817beced898338b6c5f1
           // Tri
           Padding(
             padding: const EdgeInsets.all(16),
@@ -159,7 +175,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
+<<<<<<< HEAD
 
+=======
+>>>>>>> 60ba5c58994fd6f6b825817beced898338b6c5f1
           // Grille des voitures
           Expanded(
             child: FutureBuilder<List<Car>>(
@@ -225,4 +244,11 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+<<<<<<< HEAD
 }
+=======
+}
+
+
+
+>>>>>>> 60ba5c58994fd6f6b825817beced898338b6c5f1
