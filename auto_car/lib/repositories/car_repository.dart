@@ -1,4 +1,6 @@
 import 'package:auto_car/models/car.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class CarRepository {
   // Mock data - à remplacer par des appels API
@@ -162,4 +164,30 @@ class CarRepository {
     );
     return sorted;
   }
+
+  // Ajoute ces méthodes à CarRepository
+
+Future<bool> isFavorite(String carId) async {
+  // À adapter selon ton système de stockage
+  // Exemple avec SharedPreferences:
+  final prefs = await SharedPreferences.getInstance();
+  final favorites = prefs.getStringList('favorites') ?? [];
+  return favorites.contains(carId);
+}
+
+Future<void> addFavorite(String carId) async {
+  final prefs = await SharedPreferences.getInstance();
+  final favorites = prefs.getStringList('favorites') ?? [];
+  if (!favorites.contains(carId)) {
+    favorites.add(carId);
+    await prefs.setStringList('favorites', favorites);
+  }
+}
+
+Future<void> removeFavorite(String carId) async {
+  final prefs = await SharedPreferences.getInstance();
+  final favorites = prefs.getStringList('favorites') ?? [];
+  favorites.remove(carId);
+  await prefs.setStringList('favorites', favorites);
+}
 }
