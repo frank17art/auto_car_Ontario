@@ -13,13 +13,17 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final CarRepository _carRepository = CarRepository();
   late Future<List<Car>> _carsFuture;
-  
+
   String _selectedCategory = 'Tous';
   String _sortBy = 'Récents';
   final TextEditingController _searchController = TextEditingController();
-  
+
   final List<String> categories = ['Tous', 'Sedan', 'SUV', 'Hatchback'];
-  final List<String> sortOptions = ['Récents', 'Prix: bas→haut', 'Prix: haut→bas'];
+  final List<String> sortOptions = [
+    'Récents',
+    'Prix: bas→haut',
+    'Prix: haut→bas',
+  ];
 
   @override
   void initState() {
@@ -37,23 +41,16 @@ class _HomeScreenState extends State<HomeScreen> {
       }
     });
   }
-<<<<<<< HEAD
 
   Future<List<Car>> _getFilteredCars() async {
-=======
-    Future<List<Car>> _getFilteredCars() async {
->>>>>>> 60ba5c58994fd6f6b825817beced898338b6c5f1
     List<Car> cars;
-    
+
     if (_selectedCategory == 'Tous') {
       cars = await _carRepository.getAllCars();
     } else {
       cars = await _carRepository.filterByCategory(_selectedCategory);
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> 60ba5c58994fd6f6b825817beced898338b6c5f1
     // Appliquer le tri
     switch (_sortBy) {
       case 'Prix: bas→haut':
@@ -65,10 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
       default:
         cars = await _carRepository.sortByYear(cars, ascending: false);
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> 60ba5c58994fd6f6b825817beced898338b6c5f1
     return cars;
   }
 
@@ -82,7 +76,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('AutoCar', style: TextStyle(fontWeight: FontWeight.bold)),
+        title: const Text(
+          'AutoCar',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         backgroundColor: Colors.blue,
         elevation: 0,
       ),
@@ -104,10 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-<<<<<<< HEAD
 
-=======
->>>>>>> 60ba5c58994fd6f6b825817beced898338b6c5f1
           // Filtres (Catégories)
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -119,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemBuilder: (context, index) {
                   final category = categories[index];
                   final isSelected = category == _selectedCategory;
-                  
+
                   return Padding(
                     padding: const EdgeInsets.only(right: 8),
                     child: FilterChip(
@@ -143,10 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-<<<<<<< HEAD
 
-=======
->>>>>>> 60ba5c58994fd6f6b825817beced898338b6c5f1
           // Tri
           Padding(
             padding: const EdgeInsets.all(16),
@@ -160,10 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 DropdownButton<String>(
                   value: _sortBy,
                   items: sortOptions.map((option) {
-                    return DropdownMenuItem(
-                      value: option,
-                      child: Text(option),
-                    );
+                    return DropdownMenuItem(value: option, child: Text(option));
                   }).toList(),
                   onChanged: (value) {
                     setState(() {
@@ -175,37 +163,31 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-<<<<<<< HEAD
 
-=======
->>>>>>> 60ba5c58994fd6f6b825817beced898338b6c5f1
           // Grille des voitures
           Expanded(
             child: FutureBuilder<List<Car>>(
               future: _carsFuture,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
+                  return const Center(child: CircularProgressIndicator());
                 }
 
                 if (snapshot.hasError) {
-                  return Center(
-                    child: Text('Erreur: ${snapshot.error}'),
-                  );
+                  return Center(child: Text('Erreur: ${snapshot.error}'));
                 }
 
                 final cars = snapshot.data ?? [];
 
                 if (cars.isEmpty) {
-                  return const Center(
-                    child: Text('Aucune voiture trouvée'),
-                  );
+                  return const Center(child: Text('Aucune voiture trouvée'));
                 }
 
                 return GridView.builder(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
+                  ),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     mainAxisSpacing: 16,
@@ -215,14 +197,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemCount: cars.length,
                   itemBuilder: (context, index) {
                     final car = cars[index];
-                    
+
                     return CarCard(
                       car: car,
                       onTap: () {
-                        Navigator.of(context).pushNamed(
-                          '/car-detail',
-                          arguments: car.id,
-                        );
+                        Navigator.of(
+                          context,
+                        ).pushNamed('/car-detail', arguments: car.id);
                       },
                       onFavoriteTap: () {
                         ScaffoldMessenger.of(context).showSnackBar(
@@ -244,11 +225,4 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-<<<<<<< HEAD
 }
-=======
-}
-
-
-
->>>>>>> 60ba5c58994fd6f6b825817beced898338b6c5f1
