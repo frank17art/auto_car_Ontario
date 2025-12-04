@@ -61,7 +61,7 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Détails du véhicule'),
-        backgroundColor: Colors.blue,
+        backgroundColor: const Color.fromARGB(255, 4, 16, 26),
       ),
       body: FutureBuilder<Car?>(
         future: _carFuture,
@@ -82,17 +82,46 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _CarImageHeader(
-                  imageUrl: car.imageUrl,
-                  isAvailable: car.isAvailable,
-                  onBackPressed: () => Navigator.pop(context),
-                ),
+_CarImageHeader(
+  imageUrl: car.imageUrl,
+  isAvailable: car.isAvailable,
+  onBackPressed: () => Navigator.pop(context),
+),
                 Padding(
                   padding: const EdgeInsets.all(16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       _CarTitleSection(car: car),
+                      // Marque et modèle
+                      Text(
+                        '${car.brand} ${car.model}',
+                        style: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      
+                      // Catégorie et année
+                      Text(
+                        '${car.category} • ${car.year}',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.grey[600],
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+
+                      // Prix
+                      Text(
+                        '${car.price.toStringAsFixed(0)}  ',
+                        style: const TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromRGBO(33, 150, 243, 1),
+                        ),
+                      ),
                       const SizedBox(height: 24),
                       _CarCharacteristicsSection(car: car),
                       const SizedBox(height: 24),

@@ -181,9 +181,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    mainAxisSpacing: 16,
-                    crossAxisSpacing: 16,
-                    childAspectRatio: 0.75,
+                    mainAxisSpacing: 12,
+                    crossAxisSpacing: 12,
+                    childAspectRatio: 1 / 1.3,
                   ),
                   itemCount: cars.length,
                   itemBuilder: (context, index) {
@@ -218,6 +218,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
-
-

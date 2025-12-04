@@ -90,12 +90,12 @@ class _CarCardState extends State<CarCard> {
                   ),
                   child: Image.network(
                     widget.car.imageUrl,
-                    height: 180,
+                    height: 150,
                     width: double.infinity,
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) {
                       return Container(
-                        height: 180,
+                        height: 150,
                         color: Colors.grey[300],
                         child: const Center(
                           child: Icon(Icons.image_not_supported),
@@ -107,23 +107,22 @@ class _CarCardState extends State<CarCard> {
 
                 // Badge de disponibilité
                 Positioned(
-                  top: 8,
-                  right: 8,
+                  top: 6,
+                  right: 6,
                   child: Container(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 6,
+                      horizontal: 10,
+                      vertical: 4,
                     ),
                     decoration: BoxDecoration(
-                      color:
-                          widget.car.isAvailable ? Colors.green : Colors.grey,
+                      color: widget.car.isAvailable ? Colors.green : Colors.grey,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Text(
                       widget.car.isAvailable ? 'Disponible' : 'Indisponible',
                       style: const TextStyle(
                         color: Colors.white,
-                        fontSize: 12,
+                        fontSize: 11,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -132,22 +131,20 @@ class _CarCardState extends State<CarCard> {
 
                 // Bouton favori
                 Positioned(
-                  top: 8,
-                  left: 8,
+                  top: 6,
+                  left: 6,
                   child: GestureDetector(
                     onTap: _toggleFavorite,
                     child: Container(
-                      padding: const EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(6),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         shape: BoxShape.circle,
                       ),
                       child: Icon(
-                        _isFavorite
-                            ? Icons.favorite
-                            : Icons.favorite_border,
+                        _isFavorite ? Icons.favorite : Icons.favorite_border,
                         color: _isFavorite ? Colors.red : Colors.grey,
-                        size: 20,
+                        size: 18,
                       ),
                     ),
                   ),
@@ -155,9 +152,9 @@ class _CarCardState extends State<CarCard> {
               ],
             ),
 
-            // Détails de la voiture
+            // Détails de la voiture (compacté)
             Padding(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.all(8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -165,32 +162,35 @@ class _CarCardState extends State<CarCard> {
                   Text(
                     '${widget.car.brand} ${widget.car.model}',
                     style: const TextStyle(
-                      fontSize: 16,
+                      fontSize: 14,
                       fontWeight: FontWeight.bold,
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 2),
+                  
                   // Catégorie et année
                   Text(
                     '${widget.car.category} • ${widget.car.year}',
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 11,
                       color: Colors.grey[600],
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 4),
+                  
                   // Prix
                   Text(
                     '${widget.car.price.toStringAsFixed(0)} \$',
                     style: const TextStyle(
-                      fontSize: 18,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color: Colors.blue,
+                      color: Color.fromARGB(255, 216, 5, 58),
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 4),
+                  
                   // Infos supplémentaires
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -198,14 +198,14 @@ class _CarCardState extends State<CarCard> {
                       Text(
                         '${widget.car.mileage.toStringAsFixed(0)} km',
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 11,
                           color: Colors.grey[600],
                         ),
                       ),
                       Text(
                         widget.car.fuelType,
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 11,
                           color: Colors.grey[600],
                         ),
                       ),
