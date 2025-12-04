@@ -37,7 +37,7 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Détails du véhicule'),
-        backgroundColor: Colors.blue,
+        backgroundColor: const Color.fromARGB(255, 4, 16, 26),
       ),
       body: FutureBuilder<Car?>(
         future: _carFuture,
@@ -65,12 +65,12 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                   children: [
                     Image.network(
                       car.imageUrl,
-                      height: 300,
+                      height: 200,
                       width: double.infinity,
                       fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) {
                         return Container(
-                          height: 300,
+                          height: 200,
                           color: Colors.grey[300],
                           child: const Center(
                             child: Icon(Icons.image_not_supported),
@@ -146,11 +146,11 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
 
                       // Prix
                       Text(
-                        '${car.price.toStringAsFixed(0)} €',
+                        '${car.price.toStringAsFixed(0)}  ',
                         style: const TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
-                          color: Colors.blue,
+                          color: Color.fromRGBO(33, 150, 243, 1),
                         ),
                       ),
                       const SizedBox(height: 24),

@@ -62,7 +62,7 @@ class CarCard extends StatelessWidget {
                       vertical: 6,
                     ),
                     decoration: BoxDecoration(
-                      color: car.isAvailable ? Colors.green : Colors.grey,
+                      color: car.isAvailable ? const Color.fromARGB(255, 233, 9, 9) : Colors.grey,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Text(
@@ -129,7 +129,7 @@ class CarCard extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: Colors.blue,
+                      color: Color.fromARGB(255, 216, 5, 58),
                     ),
                   ),
                   const SizedBox(height: 8),
