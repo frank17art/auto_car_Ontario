@@ -11,7 +11,7 @@ class CarRepository {
       price: 45000,
       category: 'Sedan',
       imageUrl:
-          'https://images.unsplash.com/photo-1560958089-b8a63c89c4f0?w=500',
+          'https://cdn.automobile-propre.com/uploads/2013/08/Tesla-Model-3-18.jpg',
       description: 'Voiture électrique performante avec autonomie de 500km',
       mileage: 5000,
       fuelType: 'Électrique',
@@ -25,8 +25,7 @@ class CarRepository {
       year: 2022,
       price: 65000,
       category: 'SUV',
-      imageUrl:
-          'https://images.unsplash.com/photo-1552820728-8ac41f1ce891?w=500',
+      imageUrl: 'https://thumbs.dreamstime.com/b/bmw-320d-13302109.jpg',
       description: 'SUV de luxe spacieux avec intérieur premium',
       mileage: 15000,
       fuelType: 'Essence',

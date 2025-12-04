@@ -21,10 +21,8 @@ class CarCard extends StatelessWidget {
       onTap: onTap,
       child: Card(
         elevation: 4,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-                child: Column(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Image avec badge disponibilité
@@ -52,7 +50,7 @@ class CarCard extends StatelessWidget {
                   ),
                 ),
 
-                                // Badge de disponibilité
+                // Badge de disponibilité
                 Positioned(
                   top: 8,
                   right: 8,
@@ -75,7 +73,7 @@ class CarCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                                 // Bouton favori
+                // Bouton favori
                 Positioned(
                   top: 8,
                   left: 8,
@@ -97,7 +95,7 @@ class CarCard extends StatelessWidget {
                 ),
               ],
             ),
-                        // Détails de la voiture
+            // Détails de la voiture
             Padding(
               padding: const EdgeInsets.all(12),
               child: Column(
@@ -117,15 +115,12 @@ class CarCard extends StatelessWidget {
                   // Catégorie et année
                   Text(
                     '${car.category} • ${car.year}',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey[600],
-                    ),
+                    style: TextStyle(fontSize: 12, color: Colors.grey[600]),
                   ),
                   const SizedBox(height: 8),
                   // Prix
                   Text(
-                    '${car.price.toStringAsFixed(0)} €',
+                    '\$${car.price.toStringAsFixed(0)} ',
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -139,17 +134,11 @@ class CarCard extends StatelessWidget {
                     children: [
                       Text(
                         '${car.mileage.toStringAsFixed(0)} km',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey[600],
-                        ),
+                        style: TextStyle(fontSize: 12, color: Colors.grey[600]),
                       ),
                       Text(
                         car.fuelType,
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey[600],
-                        ),
+                        style: TextStyle(fontSize: 12, color: Colors.grey[600]),
                       ),
                     ],
                   ),
@@ -162,4 +151,3 @@ class CarCard extends StatelessWidget {
     );
   }
 }
-
