@@ -1,4 +1,6 @@
 import 'package:auto_car/models/car.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class CarRepository {
   // Mock data - à remplacer par des appels API
@@ -11,7 +13,11 @@ class CarRepository {
       price: 45000,
       category: 'Sedan',
       imageUrl:
+<<<<<<< HEAD
           'https://cdn.automobile-propre.com/uploads/2013/08/Tesla-Model-3-18.jpg',
+=======
+          'https://images.dealersync.com/2925/Photos/1173439/20240813184445374_IMG_4881.jpg?_=81dc306ad36dd0f0a03eaef4b0e32bee4e17cb06',
+>>>>>>> b3507f89e19743826cf55bbf1e3539ab6b78a5dc
       description: 'Voiture électrique performante avec autonomie de 500km',
       mileage: 5000,
       fuelType: 'Électrique',
@@ -25,7 +31,12 @@ class CarRepository {
       year: 2022,
       price: 65000,
       category: 'SUV',
+<<<<<<< HEAD
       imageUrl: 'https://thumbs.dreamstime.com/b/bmw-320d-13302109.jpg',
+=======
+      imageUrl:
+          'https://img.itautomotive.fr/image/?apikey=808e17022092975cb19595ec956baeb8&url=https://cdn.bymycar.eu/fr-bo/assets/images/vehicles/vo/2001666/200_2001666_3532769.jpg&h=1200&output=webp&q=70&output=webp',
+>>>>>>> b3507f89e19743826cf55bbf1e3539ab6b78a5dc
       description: 'SUV de luxe spacieux avec intérieur premium',
       mileage: 15000,
       fuelType: 'Essence',
@@ -33,19 +44,25 @@ class CarRepository {
       vendorId: 'vendor1',
     ),
     Car(
-      id: '3',
-      brand: 'Honda',
-      model: 'Civic',
-      year: 2021,
-      price: 25000,
-      category: 'Hatchback',
+      id: '2',
+      brand: 'Lincoln',
+      model: 'Navigator',
+      year: 2024,
+      price: 125000,
+      category: 'SUV',
       imageUrl:
+<<<<<<< HEAD
           'https://tse3.mm.bing.net/th/id/OIP.4hvnrLyFnxQ_bT-lB60sxQHaEb?pid=Api&P=0&h=180',
       description: 'Voiture compacte économe en carburant',
       mileage: 40000,
+=======
+          'https://www.lincoln.com/is/image/content/dam/vdm_ford/live/en_us/lincoln/nameplate/navigator/2024/collections/dm/22_LCN_NAV_BLCP_53651.tif?croppathe=1_3x2&wid=1440',
+      description: 'SUV de luxe spacieux avec intérieur premium',
+      mileage: 5000,
+>>>>>>> b3507f89e19743826cf55bbf1e3539ab6b78a5dc
       fuelType: 'Essence',
       isAvailable: true,
-      vendorId: 'vendor2',
+      vendorId: 'vendor1',
     ),
     Car(
       id: '4',
@@ -55,7 +72,7 @@ class CarRepository {
       price: 35000,
       category: 'Sedan',
       imageUrl:
-          'https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=500',
+          'https://i0.wp.com/blog.audiblainville.com/wp-content/uploads/2022/07/audi-a4-2020_550px1583790025301.jpg?w=800&ssl=1',
       description: 'Berline sportive avec finition Audi',
       mileage: 60000,
       fuelType: 'Diesel',
@@ -63,19 +80,26 @@ class CarRepository {
       vendorId: 'vendor2',
     ),
     Car(
-      id: '5',
-      brand: 'Toyota',
-      model: 'RAV4',
-      year: 2023,
-      price: 38000,
+      id: '2',
+      brand: 'GMC',
+      model: 'Elevator',
+      year: 2026,
+      price: 85000,
       category: 'SUV',
       imageUrl:
+<<<<<<< HEAD
           'https://tse3.mm.bing.net/th/id/OIP.gzjYzfDszIGyiJIe8Vv03AHaFj?pid=Api&P=0&h=180',
       description: 'SUV fiable avec système hybride efficace',
       mileage: 8000,
       fuelType: 'Hybride',
+=======
+          'https://www.gmccanada.ca/content/dam/gmc/global/us/english/index/crossovers-suvs/2025-terrain/overview/trims/my25-terrain-mov-elevation-1920x1440-25PGTN00087.jpg?imwidth=1200',
+      description: 'SUV de luxe spacieux avec intérieur premium',
+      mileage: 1000,
+      fuelType: 'Essence',
+>>>>>>> b3507f89e19743826cf55bbf1e3539ab6b78a5dc
       isAvailable: true,
-      vendorId: 'vendor3',
+      vendorId: 'vendor1',
     ),
   ];
 
@@ -161,4 +185,30 @@ class CarRepository {
     );
     return sorted;
   }
+
+  // Ajoute ces méthodes à CarRepository
+
+Future<bool> isFavorite(String carId) async {
+  // À adapter selon ton système de stockage
+  // Exemple avec SharedPreferences:
+  final prefs = await SharedPreferences.getInstance();
+  final favorites = prefs.getStringList('favorites') ?? [];
+  return favorites.contains(carId);
+}
+
+Future<void> addFavorite(String carId) async {
+  final prefs = await SharedPreferences.getInstance();
+  final favorites = prefs.getStringList('favorites') ?? [];
+  if (!favorites.contains(carId)) {
+    favorites.add(carId);
+    await prefs.setStringList('favorites', favorites);
+  }
+}
+
+Future<void> removeFavorite(String carId) async {
+  final prefs = await SharedPreferences.getInstance();
+  final favorites = prefs.getStringList('favorites') ?? [];
+  favorites.remove(carId);
+  await prefs.setStringList('favorites', favorites);
+}
 }
