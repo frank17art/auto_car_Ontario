@@ -40,7 +40,7 @@ class CarRepository {
       price: 25000,
       category: 'Hatchback',
       imageUrl:
-          'https://images.unsplash.com/photo-1589345619662-95a3c3b03e19?w=500',
+          'https://tse3.mm.bing.net/th/id/OIP.4hvnrLyFnxQ_bT-lB60sxQHaEb?pid=Api&P=0&h=180',
       description: 'Voiture compacte économe en carburant',
       mileage: 40000,
       fuelType: 'Essence',
@@ -70,7 +70,7 @@ class CarRepository {
       price: 38000,
       category: 'SUV',
       imageUrl:
-          'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500',
+          'https://tse3.mm.bing.net/th/id/OIP.gzjYzfDszIGyiJIe8Vv03AHaFj?pid=Api&P=0&h=180',
       description: 'SUV fiable avec système hybride efficace',
       mileage: 8000,
       fuelType: 'Hybride',

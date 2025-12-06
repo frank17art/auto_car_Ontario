@@ -16,9 +16,18 @@ class AutoCarApp extends StatelessWidget {
     return MaterialApp(
       title: 'AutoCar',
       theme: ThemeData(
-        primaryColor: Colors.blue,
+        brightness: Brightness.dark, // 🌙 Mode sombre
         useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.blue, // Couleur principale
+          brightness: Brightness.dark, // 🌙 important
+        ),
+        scaffoldBackgroundColor: const Color(0xFF121212), // Fond noir élégant
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFF1E1E1E), // AppBar gris foncé
+          foregroundColor: Colors.white, // Texte blanc
+          elevation: 0,
+        ),
       ),
       home: const HomeScreen(),
       onGenerateRoute: _generateRoute,
